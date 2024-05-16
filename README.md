@@ -22,17 +22,56 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Documentação do Backend - Sistema de Gerenciamento de Clientes
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Este documento descreve a arquitetura do backend da aplicação de Sistema de Gerenciamento de Clientes, incluindo as tecnologias utilizadas e uma explicação da arquitetura padrão do NestJS.
 
-## Installation
+#### Tecnologias Utilizadas
+
+
+###### NestJS
+
+NestJS é um framework para construção de aplicativos Node.js eficientes e escaláveis. Ele utiliza TypeScript como linguagem principal e adota uma arquitetura modular e orientada a componentes.
+- **Arquitetura Modular**: O NestJS promove uma arquitetura modular, dividindo a aplicação em módulos, cada um com sua própria responsabilidade e funcionalidades.
+- **Injeção de Dependência**: Facilita a criação de componentes reutilizáveis e a manutenção de baixo acoplamento entre os módulos da aplicação.
+- **Controladores e Serviços**: Os controladores são responsáveis por lidar com as requisições HTTP e os serviços contêm a lógica de negócios da aplicação.
+- **Filtros de Exceção**: Capturam exceções lançadas durante o processamento das requisições HTTP, permitindo tratamento customizado das mesmas.
+
+###### MongoDB
+MongoDB é um banco de dados NoSQL, orientado a documentos, que oferece flexibilidade, escalabilidade e desempenho para aplicações modernas. Ele armazena dados em formato JSON-like (BSON) e é altamente adequado para aplicativos que exigem uma estrutura de dados dinâmica.
+
+- Estrutura de Dados Flexível: Os documentos no MongoDB podem ter estruturas diferentes, permitindo uma maior flexibilidade no design do esquema de dados.
+- Escalabilidade Horizontal: O MongoDB é altamente escalável, permitindo distribuir dados em vários servidores para suportar cargas de trabalho intensivas.
+
+Também utilizei o mongoose que é uma biblioteca de modelagem de objetos MongoDB para Node.js, que fornece uma solução simples e baseada em esquemas para modelar os dados da aplicação. Ele traduz os dados do MongoDB para objetos JavaScript e fornece uma API para realizar operações CRUD de forma intuitiva.
+
+#### Arquitetura
+A arquitetura padrão do NestJS segue o padrão de arquitetura MVC (Model-View-Controller), mas com uma abordagem mais modular e orientada a componentes
+- **Controladores**: responsáveis por lidar com as requisições HTTP, definindo os pontos de entrada da API. Eles são classes decoradas com @Controller() e contêm métodos decorados com @Get(), @Post(), @Put(), @Delete(), etc., para lidar com diferentes tipos de requisições.
+- **Serviços**: contêm a lógica de negócios da aplicação. Eles são injetáveis em controladores e outros serviços, permitindo a reutilização de código e a manutenção de baixo acoplamento. Os serviços são definidos como classes decoradas com @Injectable().
+
+## Rotas
+
+##### [POST] /upload
+Executa leitura de um arquivo .csv e salva dados de clientes no banco de dados.
+##### [POST] /customer
+Cria um cliente.
+##### [GET] /customer
+Busca todos os clientes.
+##### [PATCH] /customer
+Edita um cliente.
+##### [DELETE] /customer
+Exclui um cliente.
+##### [GET] /history
+Busca o histórico de todas as alterações feitas.
+
+## Instalação
 
 ```bash
 $ yarn install
 ```
 
-## Running the app
+## Iniciando aplicação
 
 ```bash
 # development
@@ -44,30 +83,3 @@ $ yarn run start:dev
 # production mode
 $ yarn run start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
