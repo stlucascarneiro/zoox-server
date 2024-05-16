@@ -52,17 +52,17 @@ A arquitetura padrão do NestJS segue o padrão de arquitetura MVC (Model-View-C
 
 ## Rotas
 
-##### [POST] /upload
+###### [POST] /upload
 Executa leitura de um arquivo .csv e salva dados de clientes no banco de dados.
-##### [POST] /customer
+###### [POST] /customer
 Cria um cliente.
-##### [GET] /customer
+###### [GET] /customer
 Busca todos os clientes.
-##### [PATCH] /customer
+###### [PATCH] /customer
 Edita um cliente.
-##### [DELETE] /customer
+###### [DELETE] /customer
 Exclui um cliente.
-##### [GET] /history
+###### [GET] /history
 Busca o histórico de todas as alterações feitas.
 
 ## Instalação
